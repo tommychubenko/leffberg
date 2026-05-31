@@ -3,146 +3,1177 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Max Leffberg - Developer</title>
+    <title>Leffberg — Mobile Dev Studio</title>
+    <meta name="description" id="meta-description" content="Leffberg — mobile app development studio. We build iOS and Android apps: Smoke Victory, Too Simple Photo to PDF, Babylon Budget. UI/UX design and cross-platform development.">
+    <meta name="keywords" id="meta-keywords" content="mobile app development, iOS development, Android development, mobile dev studio, Leffberg, app developer, cross-platform apps, React Native, Flutter, UI UX design, App Store, Google Play, Smoke Victory, Photo to PDF, Babylon Budget, Ukraine, розробка мобільних додатків, розробка iOS, розробка Android, мобільна студія, розробник додатків, створення додатків, UI UX дизайн, Україна">
+    <meta name="author" content="Leffberg">
+    <meta name="robots" content="index, follow">
+    <meta name="googlebot" content="index, follow">
+    <link rel="canonical" href="https://leffberg.com/">
+    <link rel="alternate" hreflang="en" href="https://leffberg.com/">
+    <link rel="alternate" hreflang="uk" href="https://leffberg.com/">
+    <link rel="alternate" hreflang="x-default" href="https://leffberg.com/">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://leffberg.com/">
+    <meta property="og:site_name" content="Leffberg">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:locale:alternate" content="uk_UA">
+    <meta property="og:title" id="og-title" content="Leffberg — Mobile Dev Studio">
+    <meta property="og:description" id="og-description" content="Leffberg — mobile app development studio. We build iOS and Android apps: Smoke Victory, Too Simple Photo to PDF, Babylon Budget.">
+    <meta property="og:image" content="https://leffberg.com/assets/hero.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" id="twitter-title" content="Leffberg — Mobile Dev Studio">
+    <meta name="twitter:description" id="twitter-description" content="Leffberg — mobile app development studio. We build iOS and Android apps: Smoke Victory, Too Simple Photo to PDF, Babylon Budget.">
+    <meta name="twitter:image" content="https://leffberg.com/assets/hero.png">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "Organization",
+                "@id": "https://leffberg.com/#organization",
+                "name": "Leffberg",
+                "alternateName": "Leffberg Mobile Dev Studio",
+                "url": "https://leffberg.com/",
+                "email": "leffberg@gmail.com",
+                "telephone": "+380950201222",
+                "description": "Mobile app development studio. iOS and Android apps, UI/UX design, cross-platform development.",
+                "sameAs": ["https://t.me/leffberg"],
+                "areaServed": ["UA", "US", "EU"],
+                "knowsLanguage": ["en", "uk"]
+            },
+            {
+                "@type": "WebSite",
+                "@id": "https://leffberg.com/#website",
+                "url": "https://leffberg.com/",
+                "name": "Leffberg",
+                "description": "Leffberg — mobile app development studio",
+                "publisher": { "@id": "https://leffberg.com/#organization" },
+                "inLanguage": ["en", "uk"]
+            },
+            {
+                "@type": "ProfessionalService",
+                "@id": "https://leffberg.com/#service",
+                "name": "Leffberg Mobile App Development",
+                "url": "https://leffberg.com/",
+                "provider": { "@id": "https://leffberg.com/#organization" },
+                "serviceType": ["iOS App Development", "Android App Development", "Mobile UI/UX Design", "Cross-platform App Development"],
+                "areaServed": "Worldwide"
+            }
+        ]
+    }
+    </script>
+    <link rel="icon" href="favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="manifest" href="site.webmanifest">
+    <meta name="theme-color" content="#0a0a0f">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        :root {
+            --bg: #0a0a0f;
+            --bg-elevated: #12121a;
+            --bg-card: #1a1a24;
+            --border: rgba(255, 255, 255, 0.08);
+            --text: #f0f0f5;
+            --text-muted: #9898a8;
+            --accent: #667eea;
+            --accent-2: #764ba2;
+            --gradient: linear-gradient(135deg, var(--accent) 0%, var(--accent-2) 100%);
+            --radius: 16px;
+            --radius-sm: 10px;
+            --header-h: 140px;
+            --container: 1140px;
+            --section-pad: clamp(64px, 10vw, 120px);
         }
-        
+
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html {
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a { color: inherit; text-decoration: none; }
+
+        .container {
+            width: 100%;
+            max-width: var(--container);
+            margin: 0 auto;
+            padding: 0 clamp(20px, 4vw, 40px);
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            height: var(--header-h);
+            background: rgba(10, 10, 15, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .header-inner {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        .logo img {
+            height: 120px;
+            width: auto;
+            display: block;
+        }
+
+        @media (max-width: 480px) {
+            .logo img {
+                height: 96px;
+            }
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            gap: clamp(16px, 3vw, 32px);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: clamp(12px, 2vw, 28px);
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover { color: var(--text); }
+
+        .lang-switch {
+            display: flex;
+            gap: 4px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 3px;
+        }
+
+        .lang-btn {
+            border: none;
+            background: transparent;
+            color: var(--text-muted);
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 6px 10px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .lang-btn.active {
+            background: var(--gradient);
+            color: #fff;
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        .menu-toggle span {
+            display: block;
+            width: 22px;
+            height: 2px;
+            background: var(--text);
+            border-radius: 2px;
+            transition: transform 0.3s, opacity 0.3s;
+        }
+
+        .menu-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        .menu-toggle.open span:nth-child(2) { opacity: 0; }
+        .menu-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+        /* Hero */
+        .hero {
             min-height: 100vh;
             display: flex;
-            justify-content: center;
             align-items: center;
-            padding: 20px;
+            padding-top: var(--header-h);
+            position: relative;
+            overflow: hidden;
         }
-        
-        .container {
-            background: white;
-            border-radius: 20px;
-            padding: 40px;
-            max-width: 600px;
-            width: 100%;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            text-align: center;
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -20%;
+            right: -10%;
+            width: min(600px, 80vw);
+            height: min(600px, 80vw);
+            background: radial-gradient(circle, rgba(102, 126, 234, 0.15) 0%, transparent 70%);
+            pointer-events: none;
         }
-        
-        h1 {
-            color: #333;
-            margin-bottom: 10px;
-            font-size: 2.5em;
+
+        .hero-grid {
+            position: relative;
+            z-index: 2;
+            display: grid;
+            grid-template-columns: minmax(0, 1fr);
+            align-items: center;
+            min-height: calc(100vh - var(--header-h));
         }
-        
-        .subtitle {
-            color: #666;
-            margin-bottom: 40px;
-            font-size: 1.2em;
+
+        .hero-content {
+            max-width: 560px;
         }
-        
-        .app-section {
-            margin-top: 40px;
-            padding-top: 40px;
-            border-top: 2px solid #f0f0f0;
-        }
-        
-        .app-section h2 {
-            color: #333;
-            margin-bottom: 20px;
-            font-size: 1.8em;
-        }
-        
-        .app-link {
+
+        .hero-badge {
             display: inline-block;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            text-decoration: none;
-            padding: 15px 30px;
-            border-radius: 10px;
-            font-size: 1.1em;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--accent);
+            background: rgba(102, 126, 234, 0.12);
+            border: 1px solid rgba(102, 126, 234, 0.25);
+            padding: 6px 14px;
+            border-radius: 999px;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.2rem, 5vw, 3.5rem);
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -0.03em;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 28px;
+            border-radius: var(--radius-sm);
+            font-size: 0.95rem;
             font-weight: 600;
             transition: transform 0.2s, box-shadow 0.2s;
-            margin-top: 10px;
         }
-        
-        .app-link:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+
+        .btn-primary {
+            background: var(--gradient);
+            color: #fff;
+            box-shadow: 0 8px 24px rgba(102, 126, 234, 0.35);
         }
-        
-        .app-name {
-            color: #333;
-            font-size: 1.3em;
-            margin-bottom: 10px;
+
+        .btn-primary:hover { transform: translateY(-2px); }
+
+        .btn-outline {
+            border: 1px solid var(--border);
+            color: var(--text);
+            background: transparent;
+        }
+
+        .btn-outline:hover {
+            border-color: rgba(255, 255, 255, 0.2);
+            background: var(--bg-card);
+        }
+
+        .hero-visual {
+            position: absolute;
+            right: -10vw;
+            top: 50%;
+            transform: translateY(-50%);
+            width: min(920px, 78vw);
+            z-index: 1;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .hero-visual::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to right, var(--bg) 0%, transparent 28%);
+            pointer-events: none;
+        }
+
+        .hero-visual img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+            object-position: left center;
+        }
+
+        /* Sections */
+        section { padding: var(--section-pad) 0; }
+
+        .section-label {
+            font-size: 0.8rem;
             font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent);
+            margin-bottom: 12px;
         }
-        
-        .app-description {
-            color: #666;
-            margin-bottom: 20px;
-            line-height: 1.6;
+
+        .section-title {
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 16px;
+        }
+
+        .section-desc {
+            color: var(--text-muted);
+            max-width: 640px;
+            font-size: 1.05rem;
+        }
+
+        .section-header {
+            margin-bottom: clamp(40px, 6vw, 64px);
+        }
+
+        /* About */
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .about-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: clamp(24px, 4vw, 32px);
+        }
+
+        .about-card-num {
+            font-size: 2rem;
+            font-weight: 800;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 12px;
+        }
+
+        .about-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+
+        .about-card p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* Services */
+        .services { background: var(--bg-elevated); }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        .service-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: clamp(28px, 4vw, 36px);
+            transition: border-color 0.2s;
+        }
+
+        .service-card:hover { border-color: rgba(102, 126, 234, 0.3); }
+
+        .service-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background: rgba(102, 126, 234, 0.12);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            margin-bottom: 16px;
+        }
+
+        .service-card h3 {
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+        }
+
+        .service-card p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* Apps */
+        .apps-list {
+            display: flex;
+            flex-direction: column;
+            gap: clamp(48px, 8vw, 80px);
+        }
+
+        .app-item {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: clamp(32px, 5vw, 64px);
+            align-items: center;
+        }
+
+        .app-item:nth-child(even) .app-screenshots { order: 2; }
+        .app-item:nth-child(even) .app-info { order: 1; }
+
+        .app-screenshots {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+        }
+
+        .screenshot-placeholder {
+            aspect-ratio: 9/19;
+            background: var(--bg-card);
+            border: 1px dashed rgba(255, 255, 255, 0.12);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.65rem;
+            color: var(--text-muted);
+            text-align: center;
+            padding: 8px;
+        }
+
+        .screenshot-img {
+            width: 100%;
+            aspect-ratio: 9/16;
+            object-fit: cover;
+            object-position: top center;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            display: block;
+        }
+
+        .app-tag {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--accent);
+            background: rgba(102, 126, 234, 0.1);
+            padding: 4px 10px;
+            border-radius: 6px;
+            margin-bottom: 12px;
+        }
+
+        .app-info h3 {
+            font-size: clamp(1.4rem, 3vw, 1.75rem);
+            margin-bottom: 12px;
+        }
+
+        .app-info p {
+            color: var(--text-muted);
+            margin-bottom: 24px;
+            font-size: 0.95rem;
+        }
+
+        .store-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .store-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 18px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: border-color 0.2s, background 0.2s;
+        }
+
+        .store-link:hover {
+            border-color: var(--accent);
+            background: rgba(102, 126, 234, 0.08);
+        }
+
+        /* Support / Contacts */
+        .support { background: var(--bg-elevated); }
+
+        .support-box {
+            max-width: 880px;
+            margin: 0 auto;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: clamp(32px, 5vw, 48px);
+        }
+
+        .support-intro {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            line-height: 1.8;
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .contact-card {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 20px 24px;
+            background: var(--bg-elevated);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            text-align: left;
+            transition: border-color 0.2s, background 0.2s;
+        }
+
+        a.contact-card:hover {
+            border-color: rgba(102, 126, 234, 0.4);
+            background: rgba(102, 126, 234, 0.06);
+        }
+
+        .contact-card-wide {
+            grid-column: 1 / -1;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 24px;
+        }
+
+        .contact-card-inner {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .contact-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background: rgba(102, 126, 234, 0.12);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            flex-shrink: 0;
+        }
+
+        .contact-meta {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .contact-label {
+            font-size: 0.72rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--text-muted);
+        }
+
+        .contact-value {
+            color: var(--text);
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+
+        a.contact-card .contact-value,
+        .contact-card a.contact-value {
+            color: var(--text);
+        }
+
+        a.contact-card:hover .contact-value,
+        .contact-card a.contact-value:hover {
+            color: var(--accent);
+        }
+
+        .telegram-qr {
+            width: 100px;
+            height: 100px;
+            border-radius: 10px;
+            flex-shrink: 0;
+        }
+
+        @media (max-width: 640px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-card-wide {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .telegram-qr {
+                align-self: center;
+            }
+        }
+
+        /* Footer */
+        .footer {
+            border-top: 1px solid var(--border);
+            padding: 32px 0;
+        }
+
+        .footer-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .footer-copy {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 24px;
+            list-style: none;
+        }
+
+        .footer-links a {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover { color: var(--text); }
+
+        /* Tablet */
+        @media (max-width: 1024px) {
+            .hero {
+                flex-direction: column;
+                justify-content: center;
+                padding-bottom: 48px;
+            }
+
+            .hero-grid {
+                order: 1;
+                min-height: auto;
+            }
+
+            .hero-visual {
+                order: 2;
+                position: relative;
+                right: auto;
+                top: auto;
+                transform: none;
+                width: 115%;
+                margin: 40px 0 0 auto;
+                margin-right: -15%;
+            }
+
+            .hero-visual::after {
+                background: linear-gradient(to right, var(--bg) 0%, transparent 18%);
+            }
+
+            .app-item {
+                grid-template-columns: 1fr;
+            }
+
+            .app-item:nth-child(even) .app-screenshots,
+            .app-item:nth-child(even) .app-info {
+                order: unset;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .about-grid .about-card:last-child {
+                grid-column: 1 / -1;
+            }
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: fixed;
+                top: var(--header-h);
+                left: 0;
+                right: 0;
+                background: rgba(10, 10, 15, 0.97);
+                backdrop-filter: blur(12px);
+                flex-direction: column;
+                padding: 24px;
+                border-bottom: 1px solid var(--border);
+                gap: 0;
+            }
+
+            .nav-links.open { display: flex; }
+
+            .nav-links li {
+                border-bottom: 1px solid var(--border);
+            }
+
+            .nav-links a {
+                display: block;
+                padding: 16px 0;
+                font-size: 1rem;
+            }
+
+            .menu-toggle { display: flex; }
+
+            .about-grid,
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-grid .about-card:last-child {
+                grid-column: auto;
+            }
+
+            .app-screenshots {
+                grid-template-columns: repeat(3, 1fr);
+                max-width: 360px;
+                margin: 0 auto;
+            }
+
+            .hero-actions {
+                flex-direction: column;
+            }
+
+            .btn { width: 100%; }
+
+            .footer-inner {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .app-screenshots {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .app-screenshots .screenshot-placeholder:last-child {
+                display: none;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Max Leffberg</h1>
-        <p class="subtitle">Mobile App Developer</p>
-        <p><a href="support.html" style="color: #667eea; text-decoration: none; font-size: 0.95em;">Support</a></p>
-        
-        <div class="app-section">
-            <h2>My Applications</h2>
-            <div class="app-name">Smoke Victory</div>
-            <p class="app-description">
-                Victory Timer: Mindful Interval Tracking & Relaxation. 
-                A dedicated utility tool designed to help you manage your daily schedule 
-                and reduce stress through conscious interval tracking.
-            </p>
-            <a href="https://play.google.com/store/apps/details?id=com.tommychubenko.noSmoke" 
-               target="_blank" 
-               rel="noopener noreferrer" 
-               class="app-link">
-                View on Google Play
-            </a>
-            <a href="https://apps.apple.com/us/app/smoke-victory/id6759166097" 
-               target="_blank" 
-               rel="noopener noreferrer" 
-               class="app-link">
-                View on App Store
-            </a>
+    <header class="header">
+        <div class="container header-inner">
+            <a href="#home" class="logo"><img src="assets/logo.png" alt="Leffberg — Mobile Dev Studio" width="600" height="120"></a>
+            <nav class="nav">
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#about" data-i18n="nav.about">About</a></li>
+                    <li><a href="#services" data-i18n="nav.services">Services</a></li>
+                    <li><a href="#apps" data-i18n="nav.apps">Apps</a></li>
+                    <li><a href="#support" data-i18n="nav.support">Support</a></li>
+                </ul>
+                <div class="lang-switch">
+                    <button class="lang-btn" data-lang="uk" aria-label="Ukrainian">UA</button>
+                    <button class="lang-btn" data-lang="en" aria-label="English">EN</button>
+                </div>
+                <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+                    <span></span><span></span><span></span>
+                </button>
+            </nav>
         </div>
-        
-        <div class="app-section">
-            <div class="app-name">Too Simple: Photo to PDF</div>
-            <p class="app-description">
-                Convert your photos to PDF documents quickly and easily. 
-                A simple and intuitive tool for transforming images into PDF format 
-                with just a few taps.
-            </p>
-            <a href="https://play.google.com/store/apps/details?id=com.maxleffberg.imagetopdf" 
-               target="_blank" 
-               rel="noopener noreferrer" 
-               class="app-link">
-                View on Google Play
-            </a>
+    </header>
+
+    <main>
+        <!-- Hero -->
+        <section class="hero" id="home">
+            <div class="hero-visual" aria-hidden="true">
+                <img src="assets/hero.png" alt="" loading="eager">
+            </div>
+            <div class="container hero-grid">
+                <div class="hero-content">
+                    <span class="hero-badge" data-i18n="hero.badge">Mobile Dev Studio</span>
+                    <h1 data-i18n="hero.title" data-i18n-html="true">We build <span>mobile apps</span> that people love</h1>
+                    <div class="hero-actions">
+                        <a href="#apps" class="btn btn-primary" data-i18n="hero.cta1">Our Apps</a>
+                        <a href="#support" class="btn btn-outline" data-i18n="hero.cta2">Contact Us</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About -->
+        <section id="about">
+            <div class="container">
+                <div class="section-header">
+                    <p class="section-label" data-i18n="about.label">About</p>
+                    <h2 class="section-title" data-i18n="about.title">About the studio</h2>
+                    <p class="section-desc" data-i18n="about.desc">Placeholder — studio story, mission, and values will go here.</p>
+                </div>
+                <div class="about-grid">
+                    <div class="about-card">
+                        <div class="about-card-num">01</div>
+                        <h3 data-i18n="about.card1.title">Our mission</h3>
+                        <p data-i18n="about.card1.desc">Placeholder text for mission statement.</p>
+                    </div>
+                    <div class="about-card">
+                        <div class="about-card-num">02</div>
+                        <h3 data-i18n="about.card2.title">Our approach</h3>
+                        <p data-i18n="about.card2.desc">Placeholder text for development approach.</p>
+                    </div>
+                    <div class="about-card">
+                        <div class="about-card-num">03</div>
+                        <h3 data-i18n="about.card3.title">Why us</h3>
+                        <p data-i18n="about.card3.desc">Placeholder text for competitive advantages.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services -->
+        <section class="services" id="services">
+            <div class="container">
+                <div class="section-header">
+                    <p class="section-label" data-i18n="services.label">Services</p>
+                    <h2 class="section-title" data-i18n="services.title">What we do</h2>
+                    <p class="section-desc" data-i18n="services.desc">Placeholder — overview of studio services.</p>
+                </div>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon">📱</div>
+                        <h3 data-i18n="services.s1.title">iOS Development</h3>
+                        <p data-i18n="services.s1.desc">Placeholder — native iOS app development description.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">🤖</div>
+                        <h3 data-i18n="services.s2.title">Android Development</h3>
+                        <p data-i18n="services.s2.desc">Placeholder — native Android app development description.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">⚡</div>
+                        <h3 data-i18n="services.s3.title">Cross-platform</h3>
+                        <p data-i18n="services.s3.desc">Placeholder — React Native / Flutter development description.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">🎨</div>
+                        <h3 data-i18n="services.s4.title">UI/UX Design</h3>
+                        <p data-i18n="services.s4.desc">Placeholder — design and prototyping description.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Apps -->
+        <section id="apps">
+            <div class="container">
+                <div class="section-header">
+                    <p class="section-label" data-i18n="apps.label">Portfolio</p>
+                    <h2 class="section-title" data-i18n="apps.title">Our apps</h2>
+                    <p class="section-desc" data-i18n="apps.desc">Apps we've built and published on App Store and Google Play.</p>
+                </div>
+                <div class="apps-list">
+                    <!-- Smoke Victory -->
+                    <article class="app-item">
+                        <div class="app-screenshots">
+                            <img src="assets/smoke-victory/1.png" alt="Smoke Victory — master your focus" class="screenshot-img" loading="lazy">
+                            <img src="assets/smoke-victory/2.png" alt="Smoke Victory — interval timer" class="screenshot-img" loading="lazy">
+                            <img src="assets/smoke-victory/3.png" alt="Smoke Victory — settings" class="screenshot-img" loading="lazy">
+                        </div>
+                        <div class="app-info">
+                            <span class="app-tag">iOS · Android</span>
+                            <h3>Smoke Victory</h3>
+                            <p data-i18n="apps.smoke.desc">Victory Timer: Mindful Interval Tracking & Relaxation. A dedicated utility tool designed to help you manage your daily schedule and reduce stress through conscious interval tracking.</p>
+                            <div class="store-links">
+                                <a href="https://play.google.com/store/apps/details?id=com.tommychubenko.noSmoke" target="_blank" rel="noopener noreferrer" class="store-link">Google Play</a>
+                                <a href="https://apps.apple.com/us/app/smoke-victory/id6759166097" target="_blank" rel="noopener noreferrer" class="store-link">App Store</a>
+                            </div>
+                        </div>
+                    </article>
+                    <!-- Too Simple -->
+                    <article class="app-item">
+                        <div class="app-screenshots">
+                            <img src="assets/photo-to-pdf/1.png" alt="Too Simple: Photo to PDF — privacy first" class="screenshot-img" loading="lazy">
+                            <img src="assets/photo-to-pdf/2.png" alt="Too Simple: Photo to PDF — done in seconds" class="screenshot-img" loading="lazy">
+                            <img src="assets/photo-to-pdf/3.png" alt="Too Simple: Photo to PDF — share anywhere" class="screenshot-img" loading="lazy">
+                        </div>
+                        <div class="app-info">
+                            <span class="app-tag">iOS · Android</span>
+                            <h3>Too Simple: Photo to PDF</h3>
+                            <p data-i18n="apps.pdf.desc">Convert your photos to PDF documents quickly and easily. A simple and intuitive tool for transforming images into PDF format with just a few taps.</p>
+                            <div class="store-links">
+                                <a href="https://play.google.com/store/apps/details?id=com.maxleffberg.imagetopdf" target="_blank" rel="noopener noreferrer" class="store-link">Google Play</a>
+                                <a href="https://apps.apple.com/app/too-simple-photo-to-pdf/id6759083366" target="_blank" rel="noopener noreferrer" class="store-link">App Store</a>
+                            </div>
+                        </div>
+                    </article>
+                    <!-- Babylon Budget -->
+                    <article class="app-item">
+                        <div class="app-screenshots">
+                            <img src="assets/babylon-budget/1.png" alt="Babylon Budget — transaction list" class="screenshot-img" loading="lazy">
+                            <img src="assets/babylon-budget/2.png" alt="Babylon Budget — cashflow reports" class="screenshot-img" loading="lazy">
+                            <img src="assets/babylon-budget/3.png" alt="Babylon Budget — easy transaction logging" class="screenshot-img" loading="lazy">
+                        </div>
+                        <div class="app-info">
+                            <span class="app-tag">iOS</span>
+                            <h3>Babylon Budget</h3>
+                            <p data-i18n="apps.babylon.desc">Ancient wisdom for modern budgeting. Track expenses, manage accounts, and build financial habits inspired by timeless Babylonian principles — with a beautiful paper-style interface and full privacy.</p>
+                            <div class="store-links">
+                                <a href="https://apps.apple.com/app/babylon-budget/id6761522343" target="_blank" rel="noopener noreferrer" class="store-link">App Store</a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Support -->
+        <section class="support" id="support">
+            <div class="container">
+                <div class="section-header" style="text-align: center; margin-left: auto; margin-right: auto;">
+                    <p class="section-label" data-i18n="support.label">Support</p>
+                    <h2 class="section-title" data-i18n="support.title">Get in touch</h2>
+                </div>
+                <div class="support-box">
+                    <p class="support-intro" data-i18n="support.intro" data-i18n-html="true">For any questions regarding our apps, please reach out — we will get back to you within <strong>2 business days</strong>.</p>
+                    <div class="contact-grid">
+                        <a href="tel:+380950201222" class="contact-card">
+                            <span class="contact-icon">📞</span>
+                            <div class="contact-meta">
+                                <span class="contact-label" data-i18n="support.phone.label">Phone</span>
+                                <span class="contact-value">+380950201222</span>
+                            </div>
+                        </a>
+                        <a href="mailto:leffberg@gmail.com" class="contact-card">
+                            <span class="contact-icon">✉️</span>
+                            <div class="contact-meta">
+                                <span class="contact-label" data-i18n="support.email.label">Email</span>
+                                <span class="contact-value">leffberg@gmail.com</span>
+                            </div>
+                        </a>
+                        <div class="contact-card contact-card-wide">
+                            <div class="contact-card-inner">
+                                <span class="contact-icon">✈️</span>
+                                <div class="contact-meta">
+                                    <span class="contact-label" data-i18n="support.telegram.label">Telegram</span>
+                                    <a href="https://t.me/leffberg" target="_blank" rel="noopener noreferrer" class="contact-value">t.me/leffberg</a>
+                                </div>
+                            </div>
+                            <img src="assets/telegram-qr.png" alt="Telegram t.me/leffberg" class="telegram-qr" width="100" height="100">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-inner">
+            <p class="footer-copy" data-i18n="footer.copy">© 2026 Leffberg. All rights reserved.</p>
+            <ul class="footer-links">
+                <li><a href="#apps" data-i18n="nav.apps">Apps</a></li>
+                <li><a href="#support" data-i18n="nav.support">Support</a></li>
+            </ul>
         </div>
-        
-        <div class="app-section">
-            <div class="app-name">YOU.AI</div>
-            <p class="app-description">
-                Bring your still photos to life with the power of advanced AI. 
-                Transform ordinary images into dynamic, cinematic videos in just a few taps.
-            </p>
-            <a href="https://play.google.com/store/apps/details?id=com.leffberg.youai" 
-               target="_blank" 
-               rel="noopener noreferrer" 
-               class="app-link">
-                View on Google Play
-            </a>
-        </div>
-    </div>
+    </footer>
+
+    <script>
+        const translations = {
+            en: {
+                'nav.about': 'About',
+                'nav.services': 'Services',
+                'nav.apps': 'Apps',
+                'nav.support': 'Support',
+                'hero.badge': 'Mobile Dev Studio',
+                'hero.title': 'We build <span>mobile apps</span> that people love',
+                'hero.cta1': 'Our Apps',
+                'hero.cta2': 'Contact Us',
+                'placeholder.screenshot': 'Screenshot',
+                'about.label': 'About',
+                'about.title': 'About the studio',
+                'about.desc': 'Leffberg is a mobile development studio focused on building practical iOS and Android apps — from idea and design to App Store and Google Play release. We care about clean UX, stable performance, and products that solve real user problems.',
+                'about.card1.title': 'Our mission',
+                'about.card1.desc': 'Create mobile apps that are simple to use, reliable in daily life, and valuable to people — without unnecessary complexity.',
+                'about.card2.title': 'Our approach',
+                'about.card2.desc': 'We work in short iterations: prototype, build, test, and improve. Every project gets attention to detail — from interface and animations to privacy and store requirements.',
+                'about.card3.title': 'Why us',
+                'about.card3.desc': 'We build and publish our own apps, so we understand the full product cycle — development, monetization, analytics, updates, and user support.',
+                'services.label': 'Services',
+                'services.title': 'What we do',
+                'services.desc': 'We help bring mobile products to life — for our own portfolio and for clients who need a focused, experienced team.',
+                'services.s1.title': 'iOS Development',
+                'services.s1.desc': 'Native iOS apps with Swift and modern Apple guidelines. App Store publishing, subscriptions, notifications, and full compliance with platform requirements.',
+                'services.s2.title': 'Android Development',
+                'services.s2.desc': 'Native and cross-platform Android apps optimized for different devices. Google Play integration, in-app purchases, and performance on real-world hardware.',
+                'services.s3.title': 'Cross-platform',
+                'services.s3.desc': 'Faster time-to-market with React Native and similar tools — one codebase for iOS and Android while keeping a native look and feel.',
+                'services.s4.title': 'UI/UX Design',
+                'services.s4.desc': 'Interfaces that are clear at first glance: wireframes, prototypes, design systems, and visual polish aligned with your product goals.',
+                'apps.label': 'Portfolio',
+                'apps.title': 'Our apps',
+                'apps.desc': "Apps we've built and published on App Store and Google Play.",
+                'apps.smoke.desc': 'Victory Timer: Mindful Interval Tracking & Relaxation. A dedicated utility tool designed to help you manage your daily schedule and reduce stress through conscious interval tracking.',
+                'apps.pdf.desc': 'Convert your photos to PDF documents quickly and easily. A simple and intuitive tool for transforming images into PDF format with just a few taps.',
+                'apps.babylon.desc': 'Ancient wisdom for modern budgeting. Track expenses, manage accounts, and build financial habits inspired by timeless Babylonian principles — with a beautiful paper-style interface and full privacy.',
+                'support.label': 'Support',
+                'support.title': 'Get in touch',
+                'support.intro': 'For any questions regarding our apps, please reach out — we will get back to you within <strong>2 business days</strong>.',
+                'support.phone.label': 'Phone',
+                'support.email.label': 'Email',
+                'support.telegram.label': 'Telegram',
+                'footer.copy': '© 2026 Leffberg. All rights reserved.',
+                'meta.title': 'Leffberg — Mobile Dev Studio',
+                'meta.description': 'Leffberg — mobile app development studio. We build iOS and Android apps: Smoke Victory, Too Simple Photo to PDF, Babylon Budget. UI/UX design and cross-platform development.',
+                'meta.keywords': 'mobile app development, iOS development, Android development, mobile dev studio, Leffberg, app developer, cross-platform apps, React Native, Flutter, UI UX design, App Store, Google Play, Smoke Victory, Photo to PDF, Babylon Budget, Ukraine, mobile apps, software development, app design, mobile studio'
+            },
+            uk: {
+                'nav.about': 'Про нас',
+                'nav.services': 'Послуги',
+                'nav.apps': 'Додатки',
+                'nav.support': 'Підтримка',
+                'hero.badge': 'Mobile Dev Studio',
+                'hero.title': 'Створюємо <span>мобільні додатки</span>, які подобаються людям',
+                'hero.cta1': 'Наші додатки',
+                'hero.cta2': 'Зв\'язатися',
+                'placeholder.screenshot': 'Скріншот',
+                'about.label': 'Про нас',
+                'about.title': 'Про студію',
+                'about.desc': 'Leffberg — мобільна студія розробки, яка створює практичні додатки для iOS та Android: від ідеї та дизайну до публікації в App Store і Google Play. Ми цінуємо зручний інтерфейс, стабільну роботу та продукти, які вирішують реальні задачі користувачів.',
+                'about.card1.title': 'Наша місія',
+                'about.card1.desc': 'Створювати мобільні додатки, якими легко користуватися щодня — надійні, зрозумілі та корисні, без зайвої складності.',
+                'about.card2.title': 'Наш підхід',
+                'about.card2.desc': 'Працюємо короткими ітераціями: прототип, розробка, тестування, покращення. Кожен проєкт отримує увагу до деталей — від інтерфейсу до приватності та вимог магазинів додатків.',
+                'about.card3.title': 'Чому ми',
+                'about.card3.desc': 'Ми самі створюємо та публікуємо власні додатки, тому знаємо весь цикл продукту — розробку, монетизацію, аналітику, оновлення та підтримку користувачів.',
+                'services.label': 'Послуги',
+                'services.title': 'Що ми робимо',
+                'services.desc': 'Допомагаємо запускати мобільні продукти — для власного портфоліо та для клієнтів, яким потрібна зосереджена й досвідчена команда.',
+                'services.s1.title': 'iOS розробка',
+                'services.s1.desc': 'Нативні додатки для iPhone та iPad з урахуванням рекомендацій Apple. Публікація в App Store, підписки, сповіщення та відповідність вимогам платформи.',
+                'services.s2.title': 'Android розробка',
+                'services.s2.desc': 'Додатки для Android з оптимізацією під різні пристрої. Інтеграція з Google Play, покупки в додатку та стабільна робота на реальному залізі.',
+                'services.s3.title': 'Cross-platform',
+                'services.s3.desc': 'Швидший вихід на ринок завдяки React Native та подібним технологіям — одна кодова база для iOS і Android із нативним виглядом і поведінкою.',
+                'services.s4.title': 'UI/UX дизайн',
+                'services.s4.desc': 'Інтерфейси, зрозумілі з першого погляду: wireframes, прототипи, дизайн-системи та візуальна обробка під цілі вашого продукту.',
+                'apps.label': 'Портфоліо',
+                'apps.title': 'Наші додатки',
+                'apps.desc': 'Додатки, які ми створили та опублікували в App Store та Google Play.',
+                'apps.smoke.desc': 'Victory Timer: Mindful Interval Tracking & Relaxation. Інструмент для керування щоденним розкладом та зменшення стресу через усвідомлене відстеження інтервалів.',
+                'apps.pdf.desc': 'Швидко та легко конвертуйте фото в PDF-документи. Простий і зручний інструмент для перетворення зображень у PDF.',
+                'apps.babylon.desc': 'Давня мудрість для сучасного бюджету. Відстежуйте витрати, керуйте рахунками та формуйте фінансові звички за принципами стародавнього Вавилона — з вишуканим інтерфейсом у «паперовому стилі» та повною приватністю.',
+                'support.label': 'Підтримка',
+                'support.title': 'Зв\'яжіться з нами',
+                'support.intro': 'З будь-яких питань щодо роботи додатків будь ласка зв\'яжіться з нами — ми надамо Вам зворотний зв\'язок протягом <strong>2 робочих днів</strong>.',
+                'support.phone.label': 'Телефон',
+                'support.email.label': 'Email',
+                'support.telegram.label': 'Telegram',
+                'footer.copy': '© 2026 Leffberg. Усі права захищені.',
+                'meta.title': 'Leffberg — Mobile Dev Studio'
+            }
+        };
+
+        function detectLang() {
+            const saved = localStorage.getItem('lang');
+            if (saved && translations[saved]) return saved;
+            const browser = (navigator.language || navigator.userLanguage || 'en').toLowerCase();
+            if (browser.startsWith('uk') || browser.startsWith('ru')) return 'uk';
+            return 'en';
+        }
+
+        let currentLang = detectLang();
+
+        function setLang(lang) {
+            if (!translations[lang]) return;
+            currentLang = lang;
+            localStorage.setItem('lang', lang);
+            document.documentElement.lang = lang;
+
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                const value = translations[lang][key];
+                if (value === undefined) return;
+                if (el.hasAttribute('data-i18n-html')) {
+                    el.innerHTML = value;
+                } else {
+                    el.textContent = value;
+                }
+            });
+
+            document.title = translations[lang]['meta.title'];
+
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.lang === lang);
+            });
+        }
+
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.addEventListener('click', () => setLang(btn.dataset.lang));
+        });
+
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('open');
+            navLinks.classList.toggle('open');
+        });
+
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                menuToggle.classList.remove('open');
+                navLinks.classList.remove('open');
+            });
+        });
+
+        setLang(currentLang);
+    </script>
 </body>
 </html>
